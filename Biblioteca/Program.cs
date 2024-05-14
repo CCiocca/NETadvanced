@@ -5,14 +5,23 @@
 //Inoltre, si desidera aggiungere funzionalità come la possibilità di estendere la data di scadenza del prestito e di 
 //inviare notifiche via email quando un libro è in ritardo.
 
+//aggiunta
+// Crea un libro
+// Aggiungo la Possibilità di estendere la data di scadenza
+// Aggiungo la Possibilità di mandare notifiche libro se è in scadenza
+// Prendo in prestitio il libro
+// Estendo la data di scadenza
+// Restituisco il libro
+
 var book1 = new Book("Principi di biochimica", "Lehninger", 4);
 
-DeadLineBookDecorator decoratedBook = new DeadLineBookDecorator(book1);
+ExtendDeadlineDecorator toBeExtendedBook = new ExtendDeadlineDecorator(book1);
+SendExpiryMailDecorator expiredBook = new SendExpiryMailDecorator(book1);
 
-decoratedBook.TakeBook();
-decoratedBook.ExtendDeadline(7);
-decoratedBook.SendExpiryMail();
-decoratedBook.ReturnBook();
+toBeExtendedBook.TakeBook();
+toBeExtendedBook.ExtendDeadline(7);
+expiredBook.SendExpiryMail();
+toBeExtendedBook.ReturnBook();
 
 // classe abs
 public class Book
@@ -33,7 +42,7 @@ public class Book
         if(CopyNumber > 0)
         {
             CopyNumber -= 1;
-            Console.WriteLine($"Liibro {Title} preso in prestito. Copie rimanenti {CopyNumber}");
+            Console.WriteLine($"Liibro {Title} di {Author} preso in prestito. Copie rimanenti {CopyNumber}");
         }
         else
         {
@@ -52,6 +61,7 @@ public class Book
 public abstract class BookDecorator : Book
 {
     private Book _book;
+    private DateTime _deadline;
 
     public BookDecorator(Book book) : base(book.Title, book.Author, book.CopyNumber)
     {
@@ -61,6 +71,7 @@ public abstract class BookDecorator : Book
     public override void TakeBook()
     {
         _book.TakeBook();
+        _deadline = DateTime.Now;
     }
 
     public override void ReturnBook()
@@ -70,12 +81,12 @@ public abstract class BookDecorator : Book
 }
 
 
-//specifici decorator
+//specifici decorators
 
-public class DeadLineBookDecorator : BookDecorator
+public class ExtendDeadlineDecorator : BookDecorator
 {
     private DateTime _deadline;
-    public DeadLineBookDecorator (Book book) : base(book) 
+    public ExtendDeadlineDecorator (Book book) : base(book) 
     { 
         _deadline = DateTime.Now.AddDays(15); //scadenza di 15 gg da quando prendo il libro (aka fun take a book) (numero scelto random)
     }
@@ -85,7 +96,13 @@ public class DeadLineBookDecorator : BookDecorator
         _deadline = _deadline.AddDays(extensionDays);
         Console.WriteLine($"Scadenza estesa al {_deadline.ToString()}");
     }
+}
 
+public class SendExpiryMailDecorator : BookDecorator
+{
+    private DateTime _deadline;
+    public SendExpiryMailDecorator(Book book) : base(book)
+    {}
     public void SendExpiryMail()
     {
         if (_deadline < DateTime.Now)
