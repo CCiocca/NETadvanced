@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using System.Threading.Channels;
 //Creiamo una funzione che possa essere utilizzata come validatore per il campo password di un modulodi registrazione utente.
 //La funzione di convalida riceve una stringa in input
 //e restituisce un risultato di convalida.
@@ -25,9 +26,12 @@ pwLenght
     .SetSuccessor(pwUpperCase)
     .SetSuccessor(pwSpecialChar);
 
+//User interaction
+Console.WriteLine("Type your password: ");
+var userPw = Console.ReadLine();
 
 var result = new ValidationResult(); //bool, errorList
-pwLenght.Validate("ree", result); //if wrong pw, adds an error to the list
+pwLenght.Validate(userPw, result); //if wrong pw, adds an error to the list
 
 result.PrintErrors(); //cw of result (error List) if bool of ValidationResult is False
 
