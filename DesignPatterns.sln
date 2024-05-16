@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Decorator", "Decorator\Deco
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca", "Biblioteca\Biblioteca.csproj", "{1FE77E15-EAD3-44AA-B409-E354CF797B95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainOfResponsabilities", "ChainOfResponsabilities\ChainOfResponsabilities.csproj", "{27DB30F3-0311-4126-BC90-0CA7804791DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChainOfResponsabilities", "ChainOfResponsabilities\ChainOfResponsabilities.csproj", "{27DB30F3-0311-4126-BC90-0CA7804791DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainOfResponsabilitiesPw", "ChainOfResponsabilitiesPw\ChainOfResponsabilitiesPw.csproj", "{CE58534D-2509-4950-B8DE-2EBD56DEA2AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChainOfResponsabilitiesPw", "ChainOfResponsabilitiesPw\ChainOfResponsabilitiesPw.csproj", "{CE58534D-2509-4950-B8DE-2EBD56DEA2AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainOfResp_IoC", "ChainOfResp_IoC\ChainOfResp_IoC.csproj", "{C3DF13DD-3324-4D9D-948F-C26B2D06EEAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{CE58534D-2509-4950-B8DE-2EBD56DEA2AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE58534D-2509-4950-B8DE-2EBD56DEA2AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE58534D-2509-4950-B8DE-2EBD56DEA2AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3DF13DD-3324-4D9D-948F-C26B2D06EEAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3DF13DD-3324-4D9D-948F-C26B2D06EEAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3DF13DD-3324-4D9D-948F-C26B2D06EEAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3DF13DD-3324-4D9D-948F-C26B2D06EEAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
